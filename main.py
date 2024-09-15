@@ -1,8 +1,47 @@
-import requests, json, uuid
-from time import sleep
+import requests
+import json
+import uuid
+import os
+import time
+from datetime import datetime
+from colorama import Style, Fore, init
+
+init(autoreset=True)
 
 with open('config.json', 'r') as file:
     config = json.load(file)
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+clear()
+
+tag = """⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣴⡦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡟⣳⣿⣰⢄⠀⠀⠀⣠⣤⣤⣶⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣉⠷⠿⣾⠁⠀⣼⣿⣿⣿⣿⣿⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢀⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⣿⣿⣷⣄⠹⣷⡀⣿⡿⠋⣹⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⣷⣦⡀⠀⠀⠀⠀⠀
+⠀⠀⠀⢠⣿⣿⣿⣿⣆⠀⣠⣤⣀⠀⠀⠀⠀⣴⣿⣿⣿⣿⠉⢻⣧⢿⣷⢿⠃⣴⡿⢟⣋⣁⡀⠀⠀⠀⠀⠀⢀⡀⢸⣿⣿⣿⣿⡇⣴⣿⣿⣶⣤
+⠀⢠⣦⣜⢿⣿⣟⢻⣿⣾⣿⣿⣿⣿⡆⠀⠀⠈⣩⣽⣿⣛⣻⣦⡙⢸⣿⡇⢸⡵⠾⢿⣿⣿⣿⡇⠀⠀⠀⠀⠘⢿⣲⣿⣿⣧⢹⣿⡿⣿⣿⣿⣿
+⠀⢀⣭⣭⣽⣿⣿⣼⡿⠛⣹⣿⣿⠿⠁⠀⠀⠸⣿⣿⣿⣿⠉⠉⢁⠈⠉⠁⣩⣤⣀⡘⠻⣿⣿⣿⣿⣦⠀⠀⣾⣿⣿⠿⢿⣻⣿⡏⠰⣿⣛⡋⠁
+⢀⣾⣿⣿⣉⣭⣷⠛⣻⣄⢻⣷⣦⣄⠀⠀⠀⣴⣿⣿⣿⣿⣀⣴⣫⣶⠂⠀⠻⢿⣽⣿⣿⣿⣿⣿⡿⠏⠀⠸⣿⣿⣿⣿⣿⣿⣰⣿⣷⣽⣿⣿⣷
+⠈⠻⢿⣿⠟⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⢿⣿⣿⣿⣿⡿⣱⣿⣧⣠⡄⠰⣾⣿⣿⣯⠻⠿⠟⠁⠀⠀⠀⠈⠙⠋⢸⣿⣿⣿⣿⠹⣿⣿⣿⠿
+⠀⠀⠀⠀⠸⣿⣿⣿⣿⡇⠻⠿⠟⠋⠀⠀⠀⠀⠈⠙⠛⠋⠀⣿⣿⣿⣿⣷⣴⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⡿⠀⠈⠉⠀⠀
+⠀⠀⠀⠀⠀⠻⠿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠿⠿⠿⢿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"""
+
+for line in tag.splitlines():
+    print(Fore.MAGENTA + Style.BRIGHT + line.center(os.get_terminal_size().columns))
+
+date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+def warnings(message):
+    print(Fore.CYAN + Style.BRIGHT + date + Style.RESET_ALL + Fore.YELLOW + Style.BRIGHT + ' [WARNING]' + Style.RESET_ALL + Style.BRIGHT + ' ' + message)
+
+def error(error, message):
+    print(Fore.CYAN + Style.BRIGHT + date + Style.RESET_ALL + Fore.RED + Style.BRIGHT + ' [' + error + ']' + Style.RESET_ALL + Style.BRIGHT + ' ' + message)
+
+def success(success, message):
+    print(Fore.CYAN + Style.BRIGHT + date + Style.RESET_ALL + Fore.GREEN + Style.BRIGHT + ' [' + success + ']' + Style.RESET_ALL + Style.BRIGHT + ' ' + message)
 
 def xcrsf():
     response = requests.post(
@@ -24,16 +63,19 @@ value = config['Setting']['Boolean']
 user_id = userId()
 xcrsf_token = xcrsf()
 
+if value:
+    success('RUNNING', 'Watching Paid Limited!')
+else:
+    success('RUNNING', 'Watching Web Limited!')
+
 bar = None
 while True:
-    try:
         baz = requests.get("https://pastefy.app/Pq7EfNmH/raw")
         qux = baz.json()
         quux = qux['Paid']['id'] if value else qux['Web']['id']
 
         if bar is not None and quux != bar:
             asset = quux
-            print(asset)
             economy = requests.get(f'https://economy.roblox.com/v2/assets/{asset}/details')
             if economy.ok:
                 info = economy.json()
@@ -60,20 +102,21 @@ while True:
 
                     respond = Purchase.json()
                     if respond['purchaseResult'] == "Purchase transaction success":
-                        print(f'Successfully bought {info["Name"]}')
+                        success('SUCCESS', f'Successfully bought {info["Name"]}')
                     else:
-                        print(respond)
+                        error('FAILED', respond['errorMessage'])
 
                 if value:
                     if info['PriceInRobux'] in config['Setting']['Prices']:
                         Post()
                     else:
-                        print("Price Doesn't Match")
+                        warnings("Price Doesn't Match")
                 else:
                     if info['PriceInRobux'] == 0:
                         for _ in range(5):
                             Post()
-    except requests.exceptions.RequestException as e:
-        print(f"Request failed: {e}")
+            else:
+                error('ERROR', 'RateLimit on economy Api.')
 
-    bar = quux
+        bar = quux
+
