@@ -33,7 +33,7 @@ for line in tag.splitlines():
     print(Fore.MAGENTA + Style.BRIGHT + line.center(os.get_terminal_size().columns))
 
 date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
+validating()
 def warnings(message):
     print(Fore.CYAN + Style.BRIGHT + date + Style.RESET_ALL + Fore.YELLOW + Style.BRIGHT + ' [WARNING]' + Style.RESET_ALL + Style.BRIGHT + ' ' + message)
 
@@ -42,6 +42,14 @@ def error(error, message):
 
 def success(success, message):
     print(Fore.CYAN + Style.BRIGHT + date + Style.RESET_ALL + Fore.GREEN + Style.BRIGHT + ' [' + success + ']' + Style.RESET_ALL + Style.BRIGHT + ' ' + message)
+
+def validating():
+    r = requests.get("https://users.roblox.com/v1/users/authenticated", headers={"Cookie": f".ROBLOSECURITY={config['Roblox']['Cookies']}"})
+    if r.ok:
+        succcess('WORK','Roblox Cookies Working')
+    else:
+        error('Failed','Your roblox token aren\'t valid please get it again.')
+        sys.exit()        
 
 def xcrsf():
     response = requests.post(
