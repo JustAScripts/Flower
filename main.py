@@ -45,7 +45,7 @@ def success(success, message):
 def validating():
     r = requests.get("https://users.roblox.com/v1/users/authenticated", headers={"Cookie": f".ROBLOSECURITY={config['Roblox']['Cookies']}"})
     if r.ok:
-        succcess('WORK','Roblox Cookies Working')
+        success('WORK','Roblox Cookies Working')
     else:
         error('Failed','Your roblox token aren\'t valid please get it again.')
         sys.exit()       
