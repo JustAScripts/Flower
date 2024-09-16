@@ -32,16 +32,18 @@ tag = """⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣴⡦⠀�
 for line in tag.splitlines():
     print(Fore.MAGENTA + Style.BRIGHT + line.center(os.get_terminal_size().columns))
 
-date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+from datetime import datetime
+from colorama import Fore, Style
+
 def warnings(message):
-    print(Fore.CYAN + Style.BRIGHT + date + Style.RESET_ALL + Fore.YELLOW + Style.BRIGHT + ' [WARNING]' + Style.RESET_ALL + Style.BRIGHT + ' ' + message)
+    print(Fore.CYAN + Style.BRIGHT + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + Style.RESET_ALL + Fore.YELLOW + Style.BRIGHT + ' [WARNING]' + Style.RESET_ALL + Style.BRIGHT + ' ' + message)
 
 def error(error, message):
-    print(Fore.CYAN + Style.BRIGHT + date + Style.RESET_ALL + Fore.RED + Style.BRIGHT + ' [' + error + ']' + Style.RESET_ALL + Style.BRIGHT + ' ' + message)
+    print(Fore.CYAN + Style.BRIGHT + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + Style.RESET_ALL + Fore.RED + Style.BRIGHT + ' [' + error + ']' + Style.RESET_ALL + Style.BRIGHT + ' ' + message)
 
 def success(success, message):
-    print(Fore.CYAN + Style.BRIGHT + date + Style.RESET_ALL + Fore.GREEN + Style.BRIGHT + ' [' + success + ']' + Style.RESET_ALL + Style.BRIGHT + ' ' + message)
-
+    print(Fore.CYAN + Style.BRIGHT + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + Style.RESET_ALL + Fore.GREEN + Style.BRIGHT + ' [' + success + ']' + Style.RESET_ALL + Style.BRIGHT + ' ' + message)
+    
 def validating():
     r = requests.get("https://users.roblox.com/v1/users/authenticated", headers={"Cookie": f".ROBLOSECURITY={config['Roblox']['Cookies']}"})
     if r.ok:
