@@ -4,6 +4,11 @@
   },
   "Setting": {
     "Boolean": false, 
-    "Prices": [10, 20, 20, 30, 40,65,75,85]
+    "Prices": [10, 20, 20, 30, 40, 65, 75, 85]
+  },
+  "Discord": {
+    "webhook": false,
+    "url": "",
+    "ping": ""
   }
 }
