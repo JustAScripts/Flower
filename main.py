@@ -112,7 +112,8 @@ while True:
                     )
 
                     respond = Purchase.json()
-                    if respond['purchaseResult'] == "Purchase transaction success":
+                    
+                    if respond['purchased']:
                         success('SUCCESS', f'Successfully bought {info["Name"]}')
                     else:
                         error('FAILED', respond['errorMessage'])
