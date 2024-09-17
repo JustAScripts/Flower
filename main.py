@@ -8,6 +8,13 @@ from colorama import Style, Fore, init
 
 init(autoreset=True)
 
+if requests.get('https://pastefy.app/ATu39Cpn/raw').json()  == 1.1:
+     pass
+else:
+    print(requests.get('https://pastefy.app/gx2dbjJx/raw').text)
+    print('Update it here https://github.com/JustAScripts/Flower')
+    sys.exit()
+
 with open('config.json', 'r') as file:
     config = json.load(file)
 
@@ -57,7 +64,7 @@ def hookweb(c, asset):
                     "url": thumbnail(asset)
                 },
                 "footer": {
-                    "text": "Flower Limited Sniper V1",
+                    "text": "Flower Limited Sniper V1.1",
                     "icon_url": "https://cdn.discordapp.com/attachments/1175613436483350609/1285372373465567252/12640030.jpg?ex=66ea07ce&is=66e8b64e&hm=fc2520fcfea4a3a8c399d1e6ae81fe43f769a9a24cab2746f2f750a87dc10ccd&"
                 },
                 "color": 16761035
