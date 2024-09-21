@@ -41,13 +41,13 @@ for line in tag.splitlines():
     print(Fore.MAGENTA + Style.BRIGHT + line.center(os.get_terminal_size().columns))
 
 def warnings(message):
-    print(Fore.CYAN + Style.BRIGHT + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + Style.RESET_ALL + Fore.YELLOW + Style.BRIGHT + ' [WARNING]' + Style.RESET_ALL + Style.BRIGHT + ' ' + message)
+    print(Fore.CYAN + Style.BRIGHT + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + Style.RESET_ALL + Fore.YELLOW + Style.BRIGHT + ' [WARNING]' + Style.RESET_ALL + Style.BRIGHT + ' ' + str(message))
 
 def error(error, message):
-    print(Fore.CYAN + Style.BRIGHT + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + Style.RESET_ALL + Fore.RED + Style.BRIGHT + ' [' + error + ']' + Style.RESET_ALL + Style.BRIGHT + ' ' + message)
+    print(Fore.CYAN + Style.BRIGHT + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + Style.RESET_ALL + Fore.RED + Style.BRIGHT + ' [' + error + ']' + Style.RESET_ALL + Style.BRIGHT + ' ' + str(message))
 
 def success(success, message):
-    print(Fore.CYAN + Style.BRIGHT + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + Style.RESET_ALL + Fore.GREEN + Style.BRIGHT + ' [' + success + ']' + Style.RESET_ALL + Style.BRIGHT + ' ' + message)
+    print(Fore.CYAN + Style.BRIGHT + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + Style.RESET_ALL + Fore.GREEN + Style.BRIGHT + ' [' + success + ']' + Style.RESET_ALL + Style.BRIGHT + ' ' + str(message))
 
 def thumbnail(asset):
     request = requests.get(f"https://thumbnails.roblox.com/v1/assets?assetIds={asset}&returnPolicy=PlaceHolder&size=75x75&format=Png&isCircular=false")
@@ -148,7 +148,7 @@ while True:
                     if config['Discord']['webhook']:
                         requests.post(config['Discord']['url'], json=hookweb(info['Name'], asset))
                 else:
-                    error('FAILED', respond.text)
+                    error('FAILED', respond['errorMessage'])
                     
             if value:
                 if info['PriceInRobux'] in config['Setting']['Prices']:
