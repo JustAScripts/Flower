@@ -103,7 +103,6 @@ def userId():
 security = config['Roblox']['Cookies']
 value = config['Setting']['Boolean']
 user_id = userId()
-xcrsf_token = xcrsf()
 
 if value:
     success('RUNNING', 'Watching Paid Limited!')
@@ -139,7 +138,7 @@ while True:
                 global xcrsf_token
                 Purchase = requests.post(
                     f'https://apis.roblox.com/marketplace-sales/v1/item/{info["CollectibleItemId"]}/purchase-item',
-                    headers={'x-csrf-token': xcrsf_token},
+                    headers={'x-csrf-token': xcrsf()},
                     cookies={'.ROBLOSECURITY': security},
                     json=payload
                 )
