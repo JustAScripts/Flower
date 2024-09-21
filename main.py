@@ -9,8 +9,8 @@ from colorama import Style, Fore, init
 
 init(autoreset=True)
 
-if requests.get('https://pastefy.app/ATu39Cpn/raw').json()  == 1.1:
-     pass
+if requests.get('https://pastefy.app/ATu39Cpn/raw').json() == 1.1:
+    pass
 else:
     print(requests.get('https://pastefy.app/gx2dbjJx/raw').text)
     print('Update it here https://github.com/JustAScripts/Flower')
@@ -24,19 +24,7 @@ def clear():
 
 clear()
 
-tag = """⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣴⡦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡟⣳⣿⣰⢄⠀⠀⠀⣠⣤⣤⣶⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣉⠷⠿⣾⠁⠀⣼⣿⣿⣿⣿⣿⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⢀⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⣿⣿⣷⣄⠹⣷⡀⣿⡿⠋⣹⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⣷⣦⡀⠀⠀⠀⠀⠀
-⠀⠀⠀⢠⣿⣿⣿⣿⣆⠀⣠⣤⣀⠀⠀⠀⠀⣴⣿⣿⣿⣿⠉⢻⣧⢿⣷⢿⠃⣴⡿⢟⣋⣁⡀⠀⠀⠀⠀⠀⢀⡀⢸⣿⣿⣿⣿⡇⣴⣿⣿⣶⣤
-⠀⢠⣦⣜⢿⣿⣟⢻⣿⣾⣿⣿⣿⣿⡆⠀⠀⠈⣩⣽⣿⣛⣻⣦⡙⢸⣿⡇⢸⡵⠾⢿⣿⣿⣿⡇⠀⠀⠀⠀⠘⢿⣲⣿⣿⣧⢹⣿⡿⣿⣿⣿⣿
-⠀⢀⣭⣭⣽⣿⣿⣼⡿⠛⣹⣿⣿⠿⠁⠀⠀⠸⣿⣿⣿⣿⠉⠉⢁⠈⠉⠁⣩⣤⣀⡘⠻⣿⣿⣿⣿⣦⠀⠀⣾⣿⣿⠿⢿⣻⣿⡏⠰⣿⣛⡋⠁
-⢀⣾⣿⣿⣉⣭⣷⠛⣻⣄⢻⣷⣦⣄⠀⠀⠀⣴⣿⣿⣿⣿⣀⣴⣫⣶⠂⠀⠻⢿⣽⣿⣿⣿⣿⣿⡿⠏⠀⠸⣿⣿⣿⣿⣿⣿⣰⣿⣷⣽⣿⣿⣷
-⠈⠻⢿⣿⠟⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⢿⣿⣿⣿⣿⡿⣱⣿⣧⣠⡄⠰⣾⣿⣿⣯⠻⠿⠟⠁⠀⠀⠀⠈⠙⠋⢸⣿⣿⣿⣿⠹⣿⣿⣿⠿
-⠀⠀⠀⠀⠸⣿⣿⣿⣿⡇⠻⠿⠟⠋⠀⠀⠀⠀⠈⠙⠛⠋⠀⣿⣿⣿⣿⣷⣴⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⡿⠀⠈⠉⠀⠀
-⠀⠀⠀⠀⠀⠻⠿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠿⠿⠿⢿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"""
-
+tag = """"""
 for line in tag.splitlines():
     print(Fore.MAGENTA + Style.BRIGHT + line.center(os.get_terminal_size().columns))
 
@@ -79,7 +67,7 @@ def validating():
         success('WORK', 'Roblox Cookies Working')
     else:
         error('Failed', 'Your Roblox token isn\'t valid, please get it again.')
-        sys.exit()       
+        sys.exit()
 
 validating()
 
@@ -139,20 +127,15 @@ while True:
                     cookies={'.ROBLOSECURITY': security},
                     json=payload
                 )
- 
-                try:
-                    respond = Purchase.json()
-                except requests.exceptions.JSONDecodeError:
-                    error('ERROR', 'Something went wrong with respond. Continue to Watch other will be fixed soon once root of error found.')
-                    return
-
-                if respond['purchased']:
+                
+                respond = Purchase.json()
+                if respond.get('purchased'):
                     success('SUCCESS', f'Successfully bought {info["Name"]}')
                     if config['Discord']['webhook']:
-                        ponse = requests.post(config['Discord']['url'], json=hookweb(info['Name'], asset))
+                        requests.post(config['Discord']['url'], json=hookweb(info['Name'], asset))
                 else:
-                    error('FAILED', respond['errorMessage'])
-
+                    error('FAILED', respond.text)
+                    
             if value:
                 if info['PriceInRobux'] in config['Setting']['Prices']:
                     Post()
@@ -164,6 +147,5 @@ while True:
                         Post()
         else:
             error('ERROR', 'RateLimit on economy API.')
-
-    bar = quux
-                
+            
+    bar = quux               
