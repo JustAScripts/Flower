@@ -137,9 +137,9 @@ while True:
             def Post():
                 global xcrsf_token
                 Purchase = requests.post(
-                    f'https://apis.roblox.com/marketplace-sales/v1/item/{info["CollectibleItemId"]}/purchase-item',
-                    headers={'x-csrf-token': xcrsf()},
-                    cookies={'.ROBLOSECURITY': security},
+                    f'https://apis.roblox.com/marketplace-sales/v1/item/{str(info["CollectibleItemId"])}/purchase-item',
+                    headers={'x-csrf-token': str(xcrsf())},
+                    cookies={'.ROBLOSECURITY': str(security)},
                     json=payload
                 )
                 
