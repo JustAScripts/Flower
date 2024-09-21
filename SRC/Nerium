@@ -116,7 +116,7 @@ while True:
     qux = baz.json()
     quux = qux['Paid']['id'] if value else qux['Web']['id']
     count += 1
-    print(Style.DIM + count, end='\r')
+    print(Style.DIM + str(count), end='\r')
 
     if bar is not None and quux != bar:
         asset = quux
