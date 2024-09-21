@@ -1,0 +1,1 @@
+all successful buy will be log here if you don't want Webhook
