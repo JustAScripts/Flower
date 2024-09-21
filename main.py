@@ -143,6 +143,8 @@ while True:
                 respond = Purchase.json()
                 if respond.get('purchased'):
                     success('SUCCESS', f'Successfully bought {info["Name"]}')
+                    with open('log.txt', 'a') as log:
+                        log.write(f'Successfully bought {info["Name"]}\n')
                     if config['Discord']['webhook']:
                         requests.post(config['Discord']['url'], json=hookweb(info['Name'], asset))
                 else:
