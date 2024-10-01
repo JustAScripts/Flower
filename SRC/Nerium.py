@@ -70,7 +70,7 @@ async def auth_check() -> None:
                         if res.ok:
                             print('Webhook Working. Continuing.')
 
-asyncio.run(auth_check())
+asyncio.run(await auth_check())
 
 async def thumbnail_url(asset) -> str:
     async with aiohttp.ClientSession() as thumb:
